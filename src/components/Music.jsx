@@ -40,7 +40,6 @@ const Music = () => {
 
   const displayTrack = currentTrack || demoSong;
 
-  // Load bookmarks
   useEffect(() => {
     if (bookmarks.length > 0) {
       const track = bookmarks[currentTrackIndex];
@@ -49,12 +48,10 @@ const Music = () => {
     }
   }, [currentTrackIndex, bookmarks]);
 
-  // Save bookmarks to localStorage
   useEffect(() => {
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }, [bookmarks]);
 
-  // Search tracks via JSONP to bypass CORS
   const searchTracks = (query) => {
     if (!query) return;
     const url = `https://api.deezer.com/search?q=${encodeURIComponent(
